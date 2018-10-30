@@ -1,15 +1,25 @@
 #!/usr/bin/env python
-
 import rospy
 from performance_tests.msg import SuperAwesome
 
-rospy.init_node("publisher")
-msg_string = SuperAwesome()
-pub = rospy.Publisher('/awesome_topic', SuperAwesome, queue_size = 1)
-r = rospy.Rate(rospy.get_param("/pyPublisher/publish_frequency")) 
-print(rospy.get_param("/pyPublisher/publish_frequency"))
+def talker():
+    pub = rospy.Publisher('chatter', SuperAwesome, queue_size = 10)
+    rospy.init_node('publisher', anonymous = True)
+    
+    loop_rate= 10 
+    count = 0
+    
+    while not rospy.is_shutdown():
+        rate = rospy.Rate(loop_rate) 
+        begin_str = "%s" % rospy.get_time() #time when message is sent
+        rospy.loginfo('Sending %d',loop_rate)
+        pub.publish(begin_str)
+        count += 1
 
-while not rospy.is_shutdown():
-	msg_string.awesome = "Welcome to ROS!"
-	pub.publish(msg_string)
-r.sleep()
+        rate.sleep()
+
+if __name__ == '__main__':
+    try:
+        talker()
+    except rospy.ROSInterruptException:  
+      pass
