@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="performance_tests" type="PyPublisher.py" name="publisher">
+    <param name="rate" value="1"/>
+  </node>
+
+</launch>
