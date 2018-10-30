@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<launch>
-	<node pkg="performance_tests" type="CppPublisher.cpp" name="publisher_cpp">
-		<param name="publish_frequency" type="double" value="10.0"/>
-	</node>
-	<node pkg="performance_tests" type="PySubscriber.py" name="subscriber"/>
-</launch>
