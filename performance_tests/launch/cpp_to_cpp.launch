@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<launch>
-	<node pkg="performance_tests" type="CppPublisher.cpp" name="publisher_cpp">
-		<param name="publish_frequency" type="double" value="2200.0"/>
-	</node>
-	<node pkg="performance_tests" type="CppSubscriber.cpp" name="subscriber_cpp"/>
-</launch>
